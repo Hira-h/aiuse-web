@@ -1,0 +1,47 @@
+/* =====================================================
+   WHY US
+===================================================== */
+
+.why-us {
+    background: #faf8f4;
+}
+
+.why-us h5 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.why-us .feature-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+@media (max-width: 991px) {
+
+    .why-us .position-relative {
+        height: 500px !important;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .why-us .position-relative {
+        height: 430px !important;
+    }
+
+    .why-us .position-absolute {
+        left: 15px !important;
+        bottom: 15px !important;
+        max-width: 240px !important;
+    }
+
+}

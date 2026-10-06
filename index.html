@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VELORA | Modern Fashion Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        :root {
+            --primary: #171717;
+            --secondary: #c68b59;
+            --cream: #f8f5f0;
+            --light: #fdfcf9;
+            --text: #292929;
+            --muted: #777;
+            --border: #e8e3dc;
+            --white: #ffffff;
+            --sale: #a83d3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Playfair Display", serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .gold-text {
+            color: var(--secondary);
+        }
+
+
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
+
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 9px 15px;
+            font-size: 13px;
+            letter-spacing: .4px;
+        }
+
+        .top-bar span {
+            color: #e8bd92;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            background: rgba(255,255,255,.97);
+            border-bottom: 1px solid var(--border);
+            padding: 17px 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--primary) !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+
+        .navbar-nav .nav-link {
+            color: #292929;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 8px;
+            position: relative;
+            transition: .3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 8px;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: .3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: calc(100% - 16px);
+        }
+
+        .nav-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 19px;
+            transition: .3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-icon:hover {
+            background: var(--cream);
+            color: var(--secondary);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 0;
+            right: -1px;
+            width: 17px;
+            height: 17px;
+            background: var(--secondary);
+            color: white;
+            font-size: 9px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-toggler {
+            border: none;
+            box-shadow: none !important;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+        }
+
+        .hero-slide {
+            height: 650px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,.72),
+                rgba(0,0,0,.25),
+                rgba(0,0,0,.05)
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 620px;
+            color: white;
+        }
+
+        .hero-small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #e9c29d;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-size: clamp(45px, 6vw, 78px);
+            line-height: 1.02;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 510px;
+            color: rgba(255,255,255,.88);
+            margin-bottom: 30px;
+        }
+
+        .btn-main {
+            background: white;
+            color: var(--primary);
+            padding: 13px 27px;
+            border: 1px solid white;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .btn-main:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-outline-light-custom {
+            color: white;
+            border: 1px solid rgba(255,255,255,.8);
+            padding: 13px 27px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 10px;
+            transition: .3s ease;
+        }
+
+        .btn-outline-light-custom:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 7%;
+        }
+
+        .carousel-indicators button {
+            width: 30px;
+            height: 3px;
+            border: none;
+            margin: 0 4px;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+            border-bottom: 1px solid var(--border);
+            background: var(--light);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 25px 10px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            color: var(--secondary);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .feature-text {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        .category-card {
+            position: relative;
+            height: 390px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .7s ease;
+        }
+
+        .category-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,.7),
+                transparent 55%
+            );
+        }
+
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-content {
+            position: absolute;
+            z-index: 2;
+            bottom: 25px;
+            left: 25px;
+            color: white;
+        }
+
+        .category-content h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .category-content a {
+            color: white;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid white;
+            padding-bottom: 4px;
+        }
+
+
+        /* =====================================================
+           PRODUCTS
+        ===================================================== */
+
+        .product-card {
+            border: 1px solid var(--border);
+            background: white;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            transition: .35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
+
+        .product-image {
+            position: relative;
+            height: 360px;
+            overflow: hidden;
+            background: #f3f0eb;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+
+        .product-badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .product-badge.sale {
+            background: var(--sale);
+        }
+
+        .wishlist {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 3;
+            transition: .3s ease;
+        }
+
+        .wishlist:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .product-name {
+            font-family: "DM Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: #d49a52;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 7px;
+            font-weight: 400;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .btn-dark-custom {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+            padding: 13px 28px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            transition: .3s ease;
+        }
+
+        .btn-dark-custom:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+        }
+
+
+        /* =====================================================
+           PROMO BANNER
+        ===================================================== */
+
+        .promo {
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .promo-image {
+            min-height: 520px;
+            height: 100%;
+            background-image: url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .promo-content {
+            padding: 70px;
+        }
+
+        .promo-small {
+            text-transform: uppercase;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .promo-title {
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .promo-text {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 480px;
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           INSTAGRAM / LOOKBOOK
+        ===================================================== */
+
+        .lookbook-img {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .lookbook-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s ease;
+        }
+
+        .lookbook-img:hover img {
+            transform: scale(1.08);
+        }
+
+
+        /* =====================================================
+           NEWSLETTER
+        ===================================================== */
+
+        .newsletter {
+            background: var(--primary);
+            color: white;
+            padding: 75px 20px;
+        }
+
+        .newsletter-title {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            color: #bdbdbd;
+        }
+
+        .newsletter-form {
+            max-width: 620px;
+            margin: 30px auto 0;
+            display: flex;
+            background: white;
+            padding: 5px;
+        }
+
+        .newsletter-form input {
+            border: none;
+            outline: none;
+            padding: 15px;
+            flex: 1;
+            min-width: 0;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: var(--secondary);
+            color: white;
+            padding: 0 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 70px 0 25px;
+        }
+
+        .footer-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .footer-description {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 330px;
+        }
+
+        .footer-title {
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 11px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 13px;
+            transition: .3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 9px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: .3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2a2a2a;
+            margin-top: 50px;
+            padding-top: 20px;
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           SEARCH MODAL
+        ===================================================== */
+
+        .search-box {
+            border: none;
+            border-bottom: 2px solid var(--primary);
+            border-radius: 0;
+            font-size: 24px;
+            padding: 15px 0;
+            box-shadow: none !important;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                padding-top: 15px;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 10px 0;
+            }
+
+            .navbar-icons {
+                margin-top: 15px;
+                padding-bottom: 10px;
+            }
+
+            .hero-slide {
+                height: 570px;
+            }
+
+            .hero-title {
+                font-size: 54px;
+            }
+
+            .promo-content {
+                padding: 50px 35px;
+            }
+
+            .promo-title {
+                font-size: 40px;
+            }
+
+            .product-image {
+                height: 320px;
+            }
+
+        }
+
+
+        @media (max-width: 767px) {
+
+            .top-bar {
+                font-size: 11px;
+            }
+
+            .navbar-brand {
+                font-size: 25px;
+            }
+
+            .hero-slide {
+                height: 570px;
+                background-position: center;
+            }
+
+            .hero-content {
+                align-items: flex-end;
+                padding-bottom: 70px;
+            }
+
+            .hero-text {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 43px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .btn-main,
+            .btn-outline-light-custom {
+                padding: 11px 17px;
+                font-size: 11px;
+            }
+
+            .section-padding {
+                padding: 65px 0;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .category-card {
+                height: 330px;
+            }
+
+            .product-image {
+                height: 350px;
+            }
+
+            .promo-image {
+                min-height: 350px;
+            }
+
+            .promo-content {
+                padding: 45px 25px;
+            }
+
+            .promo-title {
+                font-size: 36px;
+            }
+
+            .newsletter {
+                padding: 60px 15px;
+            }
+
+            .newsletter-title {
+                font-size: 34px;
+            }
+
+            .newsletter-form {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                background: transparent;
+            }
+
+            .newsletter-form input {
+                height: 52px;
+            }
+
+            .newsletter-form button {
+                height: 52px;
+            }
+
+            .lookbook-img {
+                height: 250px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .hero-slide {
+                height: 600px;
+            }
+
+            .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .btn-outline-light-custom {
+                margin-left: 0;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+
+            .product-info {
+                padding: 16px;
+            }
+
+            .promo-title {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="top-bar">
+    Free shipping on orders over $75 — <span>Shop the new collection</span>
+</div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            VELORA<span>.</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <i class="bi bi-list fs-2"></i>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">HOME</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">CATEGORIES</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#products">SHOP</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#sale">SALE</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#lookbook">LOOKBOOK</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">CONTACT</a>
+                </li>
+
+            </ul>
+
+
+            <div class="navbar-icons d-flex align-items-center justify-content-center">
+
+                <div
+                    class="nav-icon"
+                    data-bs-toggle="modal"
+                    data-bs-target="#searchModal"
+                    title="Search"
+                >
+                    <i class="bi bi-search"></i>
+                </div>
+
+                <div class="nav-icon" title="Account">
+                    <i class="bi bi-person"></i>
+                </div>
+
+                <div class="nav-icon" title="Wishlist">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <div
+                    class="nav-icon"
+                    title="Shopping Cart"
+                    onclick="showCart()"
+                >
+                    <i class="bi bi-bag"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="home" class="hero">
+
+    <div
+        id="heroCarousel"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+        data-bs-interval="5000"
+    >
+
+        <div class="carousel-indicators">
+
+            <button
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+            ></button>
+
+            <button
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide-to="1"
+            ></button>
+
+            <button
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide-to="2"
+            ></button>
+
+        </div>
+
+
+        <div class="carousel-inner">
+
+
+            <!-- SLIDE 1 -->
+
+            <div
+                class="carousel-item active hero-slide"
+                style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=90');
+                "
+            >
+
+                <div class="container hero-content">
+
+                    <div class="hero-text">
+
+                        <div class="hero-small">
+                            New Season 2026
+                        </div>
+
+                        <h1 class="hero-title">
+                            Effortless Style,
+                            <br>
+                            Endless <span class="gold-text">Confidence.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Discover carefully selected fashion pieces
+                            designed for modern life. Timeless silhouettes,
+                            premium details and effortless elegance.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="#products" class="btn btn-main">
+                                Shop Collection
+                            </a>
+
+                            <a href="#categories" class="btn btn-outline-light-custom">
+                                Explore
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 2 -->
+
+            <div
+                class="carousel-item hero-slide"
+                style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1800&q=90');
+                "
+            >
+
+                <div class="container hero-content">
+
+                    <div class="hero-text">
+
+                        <div class="hero-small">
+                            Premium Collection
+                        </div>
+
+                        <h1 class="hero-title">
+                            Designed For
+                            <br>
+                            Your <span class="gold-text">Everyday.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Elevated essentials made to become your
+                            everyday favorites. Discover our latest
+                            arrivals today.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="#products" class="btn btn-main">
+                                Shop New Arrivals
+                            </a>
+
+                            <a href="#sale" class="btn btn-outline-light-custom">
+                                View Offers
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 3 -->
+
+            <div
+                class="carousel-item hero-slide"
+                style="
+                    background-image:
+                    url('https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1800&q=90');
+                "
+            >
+
+                <div class="container hero-content">
+
+                    <div class="hero-text">
+
+                        <div class="hero-small">
+                            Limited Edition
+                        </div>
+
+                        <h1 class="hero-title">
+                            Your Look.
+                            <br>
+                            Your <span class="gold-text">Story.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Make every outfit memorable with our
+                            exclusive seasonal collection.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="#products" class="btn btn-main">
+                                Discover More
+                            </a>
+
+                            <a href="#lookbook" class="btn btn-outline-light-custom">
+                                Lookbook
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide="prev"
+        >
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide="next"
+        >
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="features">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <div>
+                        <div class="feature-title">
+                            FREE SHIPPING
+                        </div>
+
+                        <div class="feature-text">
+                            On orders over $75
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+
+                    <div>
+                        <div class="feature-title">
+                            EASY RETURNS
+                        </div>
+
+                        <div class="feature-text">
+                            30 day return policy
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <div class="feature-title">
+                            SECURE PAYMENT
+                        </div>
+
+                        <div class="feature-text">
+                            100% secure checkout
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+
+                    <div>
+                        <div class="feature-title">
+                            SUPPORT
+                        </div>
+
+                        <div class="feature-text">
+                            Dedicated customer care
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
+
+<section id="categories" class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="gold-text text-uppercase small fw-bold mb-2">
+                Explore
+            </div>
+
+            <h2 class="section-title">
+                Shop By Category
+            </h2>
+
+            <p class="section-subtitle">
+                Find your perfect style from our carefully curated
+                collections.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="category-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85"
+                        alt="Women's Fashion"
+                    >
+
+                    <div class="category-content">
+
+                        <h3>Women</h3>
+
+                        <a href="#products">
+                            Shop Collection
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="category-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+                        alt="Men's Fashion"
+                    >
+
+                    <div class="category-content">
+
+                        <h3>Men</h3>
+
+                        <a href="#products">
+                            Shop Collection
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4 col-md-12">
+
+                <div class="category-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+                        alt="Accessories"
+                    >
+
+                    <div class="category-content">
+
+                        <h3>Accessories</h3>
+
+                        <a href="#products">
+                            Shop Collection
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
+
+<section id="products" class="section-padding bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="gold-text text-uppercase small fw-bold mb-2">
+                Our Favorites
+            </div>
+
+            <h2 class="section-title">
+                Featured Products
+            </h2>
+
+            <p class="section-subtitle">
+                Discover pieces our customers are loving right now.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            New
+                        </span>
+
+                        <button
+                            class="wishlist"
+                            onclick="toggleWishlist(this)"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85"
+                            alt="Leather Jacket"
+                        >
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Outerwear
+                        </div>
+
+                        <div class="product-name">
+                            Premium Leather Jacket
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <div class="price">
+                            $129.00
+                        </div>
+
+                        <button
+                            class="btn btn-dark-custom w-100 mt-3"
+                            onclick="addToCart('Premium Leather Jacket',129)"
+                        >
+                            Add To Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge sale">
+                            Sale
+                        </span>
+
+                        <button
+                            class="wishlist"
+                            onclick="toggleWishlist(this)"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85"
+                            alt="Elegant Dress"
+                        >
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Dresses
+                        </div>
+
+                        <div class="product-name">
+                            Elegant Midi Dress
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <div class="price">
+                            $79.00
+                            <span class="old-price">
+                                $105.00
+                            </span>
+                        </div>
+
+                        <button
+                            class="btn btn-dark-custom w-100 mt-3"
+                            onclick="addToCart('Elegant Midi Dress',79)"
+                        >
+                            Add To Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            Trending
+                        </span>
+
+                        <button
+                            class="wishlist"
+                            onclick="toggleWishlist(this)"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=85"
+                            alt="Denim Jeans"
+                        >
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Denim
+                        </div>
+
+                        <div class="product-name">
+                            Classic Straight Jeans
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <div class="price">
+                            $59.00
+                        </div>
+
+                        <button
+                            class="btn btn-dark-custom w-100 mt-3"
+                            onclick="addToCart('Classic Straight Jeans',59)"
+                        >
+                            Add To Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="product-badge">
+                            Best Seller
+                        </span>
+
+                        <button
+                            class="wishlist"
+                            onclick="toggleWishlist(this)"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"
+                            alt="Cotton T Shirt"
+                        >
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Essentials
+                        </div>
+
+                        <div class="product-name">
+                            Premium Cotton T-Shirt
+                        </div>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <div class="price">
+                            $35.00
+                        </div>
+
+                        <button
+                            class="btn btn-dark-custom w-100 mt-3"
+                            onclick="addToCart('Premium Cotton T-Shirt',35)"
+                        >
+                            Add To Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5">
+
+            <a href="#" class="btn btn-dark-custom">
+                View All Products
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROMO
+========================================================= -->
+
+<section id="sale" class="promo">
+
+    <div class="container-fluid">
+
+        <div class="row g-0 align-items-stretch">
+
+            <div class="col-lg-6">
+
+                <div class="promo-image"></div>
+
+            </div>
+
+
+            <div class="col-lg-6 d-flex align-items-center">
+
+                <div class="promo-content">
+
+                    <div class="promo-small">
+                        Limited Time Offer
+                    </div>
+
+                    <h2 class="promo-title">
+                        Up To
+                        <span class="gold-text">40% Off</span>
+                        Selected Styles
+                    </h2>
+
+                    <p class="promo-text">
+                        Refresh your wardrobe with timeless essentials,
+                        statement pieces and modern classics. Shop our
+                        exclusive sale before it's gone.
+                    </p>
+
+                    <a href="#products" class="btn btn-dark-custom">
+                        Shop Sale
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LOOKBOOK
+========================================================= -->
+
+<section id="lookbook" class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="gold-text text-uppercase small fw-bold mb-2">
+                Inspiration
+            </div>
+
+            <h2 class="section-title">
+                The Velora Lookbook
+            </h2>
+
+            <p class="section-subtitle">
+                A glimpse into this season's favorite looks.
+            </p>
+
+        </div>
+
+
+        <div class="row g-3">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="lookbook-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=85"
+                        alt="Fashion Look"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="lookbook-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=700&q=85"
+                        alt="Fashion Look"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="lookbook-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85"
+                        alt="Fashion Look"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="lookbook-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85"
+                        alt="Fashion Look"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
+<section class="newsletter">
+
+    <div class="container text-center">
+
+        <div class="gold-text text-uppercase small fw-bold mb-2">
+            Stay Connected
+        </div>
+
+        <h2 class="newsletter-title">
+            Join The Velora Club
+        </h2>
+
+        <p>
+            Get early access to new collections, exclusive offers
+            and style inspiration.
+        </p>
+
+
+        <form
+            class="newsletter-form"
+            onsubmit="subscribeUser(event)"
+        >
+
+            <input
+                type="email"
+                id="emailInput"
+                placeholder="Enter your email address"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer id="contact">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+
+            <div class="col-lg-4">
+
+                <div class="footer-logo">
+                    VELORA<span>.</span>
+                </div>
+
+                <p class="footer-description">
+                    Modern fashion for modern living. Discover
+                    carefully curated pieces designed to make
+                    every day feel a little more special.
+                </p>
+
+                <div class="social-links mt-4">
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-pinterest"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-2 col-6">
+
+                <div class="footer-title">
+                    Shop
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#products">New Arrivals</a>
+                    </li>
+
+                    <li>
+                        <a href="#products">Women</a>
+                    </li>
+
+                    <li>
+                        <a href="#products">Men</a>
+                    </li>
+
+                    <li>
+                        <a href="#products">Accessories</a>
+                    </li>
+
+                    <li>
+                        <a href="#sale">Sale</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-lg-2 col-6">
+
+                <div class="footer-title">
+                    Help
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Shipping</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Returns</a>
+                    </li>
+
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Size Guide</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <div class="footer-title">
+                    Contact
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            25 Fashion Avenue, New York
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-envelope me-2"></i>
+                            hello@velora.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-telephone me-2"></i>
+                            +1 234 567 890
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom text-center">
+
+            © 2026 VELORA. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SEARCH MODAL
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="searchModal"
+    tabindex="-1"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content border-0 rounded-0">
+
+            <div class="modal-header border-0">
+
+                <h5 class="modal-title">
+                    Search Products
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
+            </div>
+
+            <div class="modal-body pb-4">
+
+                <input
+                    type="text"
+                    class="form-control search-box"
+                    id="searchInput"
+                    placeholder="Search for products..."
+                    onkeyup="searchProducts()"
+                >
+
+                <p
+                    id="searchResult"
+                    class="text-muted mt-3 mb-0"
+                ></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =====================================================
+       CART
+    ===================================================== */
+
+    let cartCount = 0;
+
+    let cartItems = [];
+
+
+    function addToCart(productName, price) {
+
+        cartCount++;
+
+        cartItems.push({
+            name: productName,
+            price: price
+        });
+
+        document.getElementById("cartCount").textContent = cartCount;
+
+        alert(
+            productName +
+            " has been added to your cart!"
+        );
+    }
+
+
+    function showCart() {
+
+        if (cartItems.length === 0) {
+
+            alert("Your cart is currently empty.");
+
+            return;
+        }
+
+
+        let message = "Your Cart:\n\n";
+
+        let total = 0;
+
+
+        cartItems.forEach(function(item, index) {
+
+            message +=
+                (index + 1) +
+                ". " +
+                item.name +
+                " - $" +
+                item.price +
+                "\n";
+
+            total += item.price;
+
+        });
+
+
+        message +=
+            "\nTotal: $" +
+            total;
+
+
+        alert(message);
+
+    }
+
+
+
+    /* =====================================================
+       WISHLIST
+    ===================================================== */
+
+    function toggleWishlist(button) {
+
+        const icon = button.querySelector("i");
+
+        if (icon.classList.contains("bi-heart")) {
+
+            icon.classList.remove("bi-heart");
+
+            icon.classList.add("bi-heart-fill");
+
+            button.style.background = "#171717";
+
+            button.style.color = "#ffffff";
+
+        } else {
+
+            icon.classList.remove("bi-heart-fill");
+
+            icon.classList.add("bi-heart");
+
+            button.style.background = "#ffffff";
+
+            button.style.color = "#171717";
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NEWSLETTER
+    ===================================================== */
+
+    function subscribeUser(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("emailInput").value;
+
+
+        if (email.trim() === "") {
+
+            alert("Please enter your email.");
+
+            return;
+        }
+
+
+        alert(
+            "Thank you for subscribing!\n\n" +
+            email +
+            " has been added to the Velora Club."
+        );
+
+
+        document.getElementById("emailInput").value = "";
+
+    }
+
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    function searchProducts() {
+
+        const input =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const result =
+            document.getElementById("searchResult");
+
+
+        if (input === "") {
+
+            result.textContent = "";
+
+            return;
+
+        }
+
+
+        const products = [
+            "Premium Leather Jacket",
+            "Elegant Midi Dress",
+            "Classic Straight Jeans",
+            "Premium Cotton T-Shirt"
+        ];
+
+
+        const matches =
+            products.filter(function(product) {
+
+                return product
+                    .toLowerCase()
+                    .includes(input);
+
+            });
+
+
+        if (matches.length > 0) {
+
+            result.innerHTML =
+                "<strong>Products found:</strong><br>" +
+                matches.join("<br>");
+
+        } else {
+
+            result.textContent =
+                "No products found for \"" +
+                input +
+                "\".";
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NAVBAR CLOSE ON MOBILE
+    ===================================================== */
+
+    document
+        .querySelectorAll(".navbar-nav .nav-link")
+        .forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                const navbar =
+                    document.getElementById("mainNavbar");
+
+
+                if (
+                    navbar.classList.contains("show")
+                ) {
+
+                    const collapse =
+                        bootstrap.Collapse.getInstance(navbar);
+
+                    if (collapse) {
+                        collapse.hide();
+                    }
+
+                }
+
+            });
+
+        });
+
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const observer =
+        new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.1
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".product-card, .category-card, .lookbook-img"
+        )
+        .forEach(function(element) {
+
+            element.style.opacity = "0";
+
+            element.style.transform =
+                "translateY(30px)";
+
+            element.style.transition =
+                "opacity .7s ease, transform .7s ease";
+
+            observer.observe(element);
+
+        });
+
+</script>
+
+
+<!-- Bootstrap JavaScript -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+></script>
+
+</body>
+</html>
